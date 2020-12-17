@@ -14,11 +14,11 @@ function f($task, $values)
     echo"<h3 class=\"flex-item__h3\">Task $task</h3>";
     foreach ($values as $key => $value) {
         echo "<p>$key</p>";
-        echo '<pre>';
+        // echo '<pre>';
         print_r($value);
-        echo '<br>';
-        var_dump($value);
-        echo '</pre>';
+        // echo '<br>';
+        // var_dump($value);
+        // echo '</pre>';
     }
     echo'</div>';
 };
@@ -30,7 +30,17 @@ $result = round($result / 86400);
 f(1, ['Days before the new year' => $result]);
 
 
+f(2, [
+    'form' => '<form action="#" method="post">
+        <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+        <input type="text" name="year" id="">
+        <input type="submit" value="send">
+        </form>',
+    'Leap year' => $year
+]);
 
+$year = $_REQUEST;
+// $result = date('L', strtotime("$year-01-01"));
 
 
 
