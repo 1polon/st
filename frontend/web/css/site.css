@@ -139,3 +139,16 @@ a.desc:after {
 .flex-item__h3{
     text-align: center;
 }
+
+.flex-item__block {
+    border-radius: 5px;
+    border-color: rgb(93, 99, 122);
+    padding: 5px;
+    border: 2px solid green;
+
+}
+
+.flex-item__p {
+    text-align: center;
+    margin-top: 25px;
+}
