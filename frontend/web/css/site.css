@@ -123,3 +123,18 @@ a.desc:after {
 
 
 /* primary styles */
+.d-flex-row {
+    display: flex;
+
+}
+.flex-item {
+    margin: 10px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    padding: 10px;
+    width: 30%;
+}
+
+.flex-item__h3{
+    text-align: center;
+}
