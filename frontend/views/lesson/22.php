@@ -157,6 +157,7 @@ if (!empty($userDate)) {
     foreach ($zodiacs as $key => $value) {
         if ($value[0] <= $userDate && $value[1] >= $userDate) {
             $result = $key;
+            break;
         }
     }
 }
@@ -168,8 +169,40 @@ f(7, ['your birthday date date.month' => '<form action="#" method="post">
         </form>',
 'your zodiac' => $result]);
 
+$userDate = empty($_REQUEST['birthdayDate']) ? null : $_REQUEST['birthdayDate'];
+
+$zodiacsPrediction = [
+    'Овен' =>       [],
+    'Телец' =>      [],
+    'Близнецы' =>   [],
+    'Рак' =>        [],
+    'Лев' =>        [],
+    'Дева' =>       [],
+    'Весы' =>       [],
+    'Скорпион' =>   [],
+    'Стрелец' =>    ['1221' => 'It\'s good prediction'],
+    'Козерог' =>    [],
+    'Водолей' =>    [],
+    'Рыбы' =>       [],
+];
+
+if (!empty($userDate)) {
+    $userDate =  implode('', array_reverse(explode('.', $userDate)));
+    $dateNow = date('md');
+    foreach ($zodiacsPrediction[$result] as $key => $value) {
+        if ($key == $dateNow) {
+            $result = $value;
+        }
+    }
+}
 
 
+f(8, ['your birthday date date.month' => '<form action="#" method="post">
+        <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+        <input type="text" name="birthdayDate" id="" value="">
+        <input type="submit" value="send">
+        </form>',
+'your zodiac' => $result]);
 
 
 
