@@ -135,34 +135,31 @@ for ($i=31; $i > 0; $i--) {
 f(6, ['Days to pancake day' => $DaysLeftToPancake]);
 
 $zodiacs = [
-    'Овен' => ['21-03-1970', '20-04-1970'],
-    'Телец' => ['21-04-1970', '20-05-1970'],
-    'Близнецы' => ['21-05-1970', '20-06-1970'],
-    'Рак' => ['21-06-1970', '22-07-1970'],
-    'Лев' => ['23-07-1970', '22-08-1970'],
-    'Дева' => ['23-08-1970', '23-09-1970'],
-    'Весы' => ['24-09-1970', '23-10-1970'],
-    'Скорпион' => ['24-10-1970', '21-11-1970'],
-    'Стрелец' => ['22-11-1970', '21-12-1970'],
-    'Козерог' => ['22-12-1970', '19-01-1970'],
-    'Водолей' => ['22-01-1971', '18-02-1971'],
-    'Рыбы' => ['19-02-1971', '20-03-1971'],
+    'Овен' =>       ['0321', '0420'],
+    'Телец' =>      ['0421', '0520'],
+    'Близнецы' =>   ['0521', '0620'],
+    'Рак' =>        ['0621', '0722'],
+    'Лев' =>        ['0723', '0822'],
+    'Дева' =>       ['0823', '0923'],
+    'Весы' =>       ['0924', '1023'],
+    'Скорпион' =>   ['1024', '1121'],
+    'Стрелец' =>    ['1122', '1221'],
+    'Козерог ' =>   ['1222', 1300],
+    'Козерог' =>    ['0',    '0119'],
+    'Водолей' =>    ['0122', '0218'],
+    'Рыбы' =>       ['0219', '0320'],
 ];
 
 $userDate = empty($_REQUEST['birthdayDate']) ? null : $_REQUEST['birthdayDate'];
 $result = '';
-if ($userDate != null) {   
-    $userDate = explode('.', $userDate);
+if (!empty($userDate)) {   
+    $userDate =  implode('', array_reverse(explode('.', $userDate)));
     foreach ($zodiacs as $key => $value) {
-        $date1 = mktime(0,0,0, $value[1], $value[0]);
-        $date2 = mktime(0,0,0, $value[3], $value[2]);
-        $userDate = mktime(0,0,0, $userDate[1], $userDate[0]);
-        if ($date1 < $userDate && $userDate < $date2) {
+        if ($value[0] <= $userDate && $value[1] >= $userDate) {
             $result = $key;
         }
     }
 }
-
 
 f(7, ['your birthday date date.month' => '<form action="#" method="post">
         <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
@@ -170,7 +167,6 @@ f(7, ['your birthday date date.month' => '<form action="#" method="post">
         <input type="submit" value="send">
         </form>',
 'your zodiac' => $result]);
-
 
 
 
