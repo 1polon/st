@@ -414,6 +414,73 @@ f(16, ['questions' => '<form action="#" method="post">
         </form>',
 ]);
 
+$questions_17 = [
+    '2+5' => ['true' => '7', '2', '3'],
+    'Лучший размер груди?' => ['true' => '5', 'true' => '4', '2'],
+    'Работа делает из человека -' => ['обезьяну', 'true' => "Человека"]
+];
+$i = 1;
+$string_17 = '';
+$ansvers_17 = ['0'];
+foreach ($questions_17 as $key => $value) {
+    ${'request_17_' . $i} = r("22_17_$i");
+    $radio = '';
+    foreach ($value as $key2 => $value2) {   
+        
+        $radio .= '<input id="radio_17_' . $i .'_' . $value2 . '" type="checkbox" name="22_17_' . $i .'_' . $value2 . '" value="' . $value2 .'"><label for="radio_17_' . $i .'_' . $value2 . '">' . $value2 . "</label><br>";
+        // d($key2 === 'true');
+        $key2 === 'true' ? $ansvers_17[$i] = $value2 : '';
+    }
+    // d(${'request_17_' .$i});
+    // d($ansvers_17[$i]);
+    $result = ${'request_17_' .$i} == $ansvers_17[$i] ? "<br>your answer " . ${'request_17_' . $i} ." correct <br>" : "<br>" . $radio;
+    $string_17 .= $key . $result;
+    $i++;
+}
+
+f(17, ['questions' => '<form action="#" method="post">
+<input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+' . $string_17 . '
+<input type="submit" value="send">
+</form>',
+]);
+
+
+$request_19 = r('22_19');
+$result_19 = 1;
+
+for ($i=1; $i <= $request_19; $i++) { 
+    $result_19 = $result_19 * $i;
+}
+
+f(19, ['factorial' => '<form action="#" method="post">
+<input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+<input type="text" name="22_19">
+<input type="submit" value="send">
+</form>',
+$result_19
+]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
