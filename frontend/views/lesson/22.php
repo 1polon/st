@@ -1,6 +1,6 @@
 <?php
 $this->registerJs(
-    "var scroll = setInterval (function () {window.scrollBy (0,2000);}, 2000)"
+    "var scroll = setInterval (function () {window.scrollBy (0,5000);}, 2000)"
 );
 
 echo '<h2>PHP,SQL</h2><div class="d-flex-row">';
@@ -462,8 +462,41 @@ $result_19
 ]);
 
 
+$result_20 = [];
+$countX_20 = 'empty';
+$request_20_a = (integer) r('22_20_a');
+$request_20_b = (integer) r('22_20_b');
+$request_20_c = (integer) r('22_20_c');
+$discriminant_20 = null;
 
+$discriminant_20 = pow($request_20_b, 2) - 4 * $request_20_a * $request_20_c;
 
+if ($discriminant_20 > 0) $countX_20 = 2;
+if ($discriminant_20 === 0) $countX_20 = 1;
+if ($discriminant_20 < 0) $countX_20 = 0;
+
+switch ($countX_20) {
+    case 2:
+        $result_20['x1'] = (-$request_20_b + sqrt($discriminant_20)) / (2 * $request_20_a);
+        $result_20['x2'] = (-$request_20_b - sqrt($discriminant_20)) / (2 * $request_20_a);
+        break;
+    case 1:
+        $result_20['x1'] = (-$request_20_b + sqrt($discriminant_20)) / (2 * $request_20_a);
+        break;
+    case 0:
+        $result_20 = 'discriminant is lower of 0';
+        break;
+}
+
+f(20, ['quadratic' => '<form action="#" method="post">
+<input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+<input type="text" name="22_20_a" placeholder="a">
+<input type="text" name="22_20_b" placeholder="b">
+<input type="text" name="22_20_c" placeholder="c">
+<input type="submit" value="send">
+</form>',
+$result_20
+]);
 
 
 
