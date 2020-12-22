@@ -1,10 +1,15 @@
 <?php
+$this->registerJs(
+    "var scroll = setInterval (function () {window.scrollBy (0,1000);}, 2000)"
+);
+
 echo '<h2>PHP,SQL</h2><div class="d-flex-row">';
 
 
 
 // print task number
 // print values
+
 function f($task, $values)
 {
     if (empty($task)) {
@@ -172,18 +177,19 @@ f(7, ['your birthday date date.month' => '<form action="#" method="post">
 $userDate = empty($_REQUEST['birthdayDate']) ? null : $_REQUEST['birthdayDate'];
 
 $zodiacsPrediction = [
-    'Овен' =>       [],
-    'Телец' =>      [],
-    'Близнецы' =>   [],
-    'Рак' =>        [],
-    'Лев' =>        [],
-    'Дева' =>       [],
-    'Весы' =>       [],
-    'Скорпион' =>   [],
-    'Стрелец' =>    ['1221' => 'It\'s good prediction'],
-    'Козерог' =>    [],
-    'Водолей' =>    [],
-    'Рыбы' =>       [],
+    'Овен' =>       ['1222' => 'It\'s good prediction'],
+    'Телец' =>      ['1222' => 'It\'s good prediction'],
+    'Близнецы' =>   ['1222' => 'It\'s good prediction'],
+    'Рак' =>        ['1222' => 'It\'s good prediction'],
+    'Лев' =>        ['1222' => 'It\'s good prediction'],
+    'Дева' =>       ['1222' => 'It\'s good prediction'],
+    'Весы' =>       ['1222' => 'It\'s good prediction'],
+    'Скорпион' =>   ['1222' => 'It\'s good prediction'],
+    'Стрелец' =>    ['1222' => 'It\'s good prediction'],
+    'Козерог' =>    ['1222' => 'It\'s good prediction'],
+    'Козерог ' =>    ['1222' => 'It\'s good prediction'],
+    'Водолей' =>    ['1222' => 'It\'s good prediction'],
+    'Рыбы' =>       ['1222' => 'It\'s good prediction'],
 ];
 
 if (!empty($userDate)) {
@@ -197,7 +203,7 @@ if (!empty($userDate)) {
 }
 
 
-f(8, ['your birthday date date.month' => '<form action="#" method="post">
+f(9, ['your birthday date date.month' => '<form action="#" method="post">
         <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
         <input type="text" name="birthdayDate" id="" value="">
         <input type="submit" value="send">
@@ -207,13 +213,40 @@ f(8, ['your birthday date date.month' => '<form action="#" method="post">
 
 
 
+$request_10 = empty($_REQUEST['22_10']) ? null : $_REQUEST['22_10'];
+$words_10 = 0;
+$letters_10 = 0;
+$lettersWithoutSpaces_10 = 0;
+if ($request_10 != null) {
+    $words_10 = count(preg_split('/\s+/', $request_10));
+    $letters_10 = iconv_strlen($request_10);
+    $lettersWithoutSpaces_10 = iconv_strlen(str_replace(' ', '', $request_10));
+}
+
+f(10, ['enter your text' => '<form action="#" method="post">
+        <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+        <textarea name="22_10"></textarea><br>
+        <input type="submit" value="send">
+        </form>',
+        'count words' => $words_10 ,
+        'coutn letters' => $letters_10,
+        'count letters without spaces' => $lettersWithoutSpaces_10,
+]);
 
 
-
-
-
-
-
+$request_11 = empty($_REQUEST['22_11']) ? false : $_REQUEST['22_11'];
+$persentOfEachSymbol_11 = 0;
+if ($request_11) {
+    $sumbols = mb_str_split($request_11);
+    d($sumbols);
+}
+f(11, ['enter your text' => '<form action="#" method="post">
+        <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+        <textarea name="22_11"></textarea><br>
+        <input type="submit" value="send">
+        </form>',
+        'count letters without spaces' => $persentOfEachSymbol_11,
+]);
 
 
 
