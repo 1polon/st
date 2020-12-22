@@ -467,13 +467,14 @@ $countX_20 = 'empty';
 $request_20_a = (integer) r('22_20_a');
 $request_20_b = (integer) r('22_20_b');
 $request_20_c = (integer) r('22_20_c');
-$discriminant_20 = null;
+$discriminant_20 = 'empty';
 
 $discriminant_20 = pow($request_20_b, 2) - 4 * $request_20_a * $request_20_c;
-
-if ($discriminant_20 > 0) $countX_20 = 2;
-if ($discriminant_20 === 0) $countX_20 = 1;
-if ($discriminant_20 < 0) $countX_20 = 0;
+if (!empty($request_20_a)) {
+    if ($discriminant_20 > 0) $countX_20 = 2;
+    if ($discriminant_20 == 0) $countX_20 = 1;
+    if ($discriminant_20 < 0) $countX_20 = 0;
+}
 
 switch ($countX_20) {
     case 2:
@@ -498,13 +499,124 @@ f(20, ['quadratic' => '<form action="#" method="post">
 $result_20
 ]);
 
+$request_21 = [(integer) r('22_21_a'), (integer) r('22_21_b'), $request_21_c = (integer) r('22_21_c')];
+$result_21 = 'not num of Pifagor';
+
+$maxKey_21 = array_search(max($request_21), $request_21);
+$maxResult_21 = max($request_21);
+unset($request_21[$maxKey_21]);
+d($request_21);
+if (!empty($request_21[0])) {   
+    if (pow($maxResult_21, 2) === pow($request_21[0], 2) + pow($request_21[1], 2)) $result_21 = 'it\'s num of Pifagor';
+}
 
 
 
+f(21, ['quadratic' => '<form action="#" method="post">
+<input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+<input type="text" name="22_21_a" placeholder="a">
+<input type="text" name="22_21_b" placeholder="b">
+<input type="text" name="22_21_c" placeholder="c">
+<input type="submit" value="send">
+</form>',
+$result_21
+]);
+
+
+$request_22 = r('22_22');
+
+$result_22 = [];
+for ($i=1; $i <= $request_22; $i++) { 
+    if ($request_22 % $i === 0) $result_22[] = $i;
+}
+f(22, ['modulo' => '<form action="#" method="post">
+<input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+<input type="text" name="22_22" placeholder="">
+<input type="submit" value="send">
+</form>',
+'divisors' => $result_22
+]);
+
+
+$request_24 = [(integer) r('22_24_1'), (integer) r('22_24_2')];
+$result_24 = [];
+$result_25 = [];
+for ($i=1; $i <= max($request_24); $i++) { 
+    if ($request_24[0] % $i === 0 && $request_24[1] % $i === 0) $result_24[] = $i;
+}
+if (!empty($result_25)) {
+    $result_25 = max($result_24);
+}
+
+
+f('24-25', ['modulo' => '<form action="#" method="post">
+<input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+<input type="text" name="22_24_1" placeholder="">
+<input type="text" name="22_24_2" placeholder="">
+<input type="submit" value="send">
+</form>',
+'divisors' => $result_24,
+'divisors max' => $result_25
+]);
+
+$request_26 = [(integer) r('22_26_1'), (integer) r('22_26_2')];
+$result_26 = 0;
+for ($i=2; $i < PHP_INT_MAX ; $i++) { 
+    if ($request_26[0] % $i === 0 && $request_26[1] % $i === 0) {
+        $result_26 = $i;
+        break;
+    }
+}
 
 
 
+f(26, ['modulo' => '<form action="#" method="post">
+<input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+<input type="text" name="22_26_1" placeholder="">
+<input type="text" name="22_26_2" placeholder="">
+<input type="submit" value="send">
+</form>',
+'divisors' => $result_26,
+]);
 
+$days_27 = null;
+$months_27 = null;
+$years_27 = null;
+$result_27 = null;
+
+for ($i=1; $i < 32; $i++) { 
+    $days_27 .= "<option>$i</option>";
+}
+foreach ($monthsRu as $key => $value) { 
+    $months_27 .= "<option value=\"$key\">$value</option>";
+}
+for ($i=1990; $i < 2021; $i++) { 
+    $years_27 .= "<option>$i</option>";
+}
+
+$result_27 = $weeksRu[date('w', mktime(0,0,0,r('22_27_2'), r('22_27_1'), r('22_27_3')))];
+
+f(27, ['enter your date' => '<form action="#" method="post">
+<input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+<select name="22_27_1">
+' .
+$days_27
+. '
+</select>
+<select name="22_27_2">
+' .
+$months_27
+. '
+</select>
+<select name="22_27_3">
+' .
+$years_27
+. '
+</select>
+<input type="submit" value="send">
+</form>',
+'date' => $result_27,
+]);
 
 
 
