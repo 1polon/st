@@ -1,6 +1,6 @@
 <?php
 $this->registerJs(
-    "var scroll = setInterval (function () {window.scrollBy (0,1000);}, 2000)"
+    "var scroll = setInterval (function () {window.scrollBy (0,2000);}, 2000)"
 );
 
 echo '<h2>PHP,SQL</h2><div class="d-flex-row">';
@@ -28,6 +28,11 @@ function d($value)
     echo '<pre>';
     var_dump($value);
     echo '</pre>';
+}
+
+function r($request)
+{
+    return empty($_REQUEST[$request]) ? false : $_REQUEST[$request];
 }
 
 date_default_timezone_set('Europe/Kiev');
@@ -235,10 +240,22 @@ f(10, ['enter your text' => '<form action="#" method="post">
 
 
 $request_11 = empty($_REQUEST['22_11']) ? false : $_REQUEST['22_11'];
-$persentOfEachSymbol_11 = 0;
+$persentOfEachSymbol_11 = [];
 if ($request_11) {
     $sumbols = mb_str_split($request_11);
-    d($sumbols);
+    $sumbolsCount = iconv_strlen($request_11);
+    foreach ($sumbols as $key => $value) {
+        if (!empty($persentOfEachSymbol_11[$value])) {
+            $persentOfEachSymbol_11[$value] += 1;
+        } else {
+            $persentOfEachSymbol_11[$value] = 1;
+        }
+    }
+
+    foreach ($persentOfEachSymbol_11 as $key => $value) {
+        $persentOfEachSymbol_11[$key] = round($value / $sumbolsCount, 2);
+    }
+    
 }
 f(11, ['enter your text' => '<form action="#" method="post">
         <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
@@ -249,26 +266,153 @@ f(11, ['enter your text' => '<form action="#" method="post">
 ]);
 
 
+$request_12 = empty($_REQUEST['22_12']) ? false : str_split($_REQUEST['22_12']);
+$wordArray_12 = [
+    'hello',
+    'goodbye',
+    'hlo'
+];
+$result_12 = [];
+if ($request_12) {   
+    foreach ($wordArray_12 as $key => $value) {
+        $flag = true;
+        foreach ($request_12 as $key2 => $value2) {
+            strpos($value, $value2) !== false ? '' : $flag = false;
+        }
+        $flag ? $result_12[] = $value : '';
+    }
+}
+
+f(12, ['enter your text' => '<form action="#" method="post">
+        <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+        <textarea name="22_12"></textarea><br>
+        <input type="submit" value="send">
+        </form>',
+        'words in array' => $result_12,
+]);
+
+$result_13 = [];
+$request_13 = r('22_13');
+
+// take alfabet first letters
+$request_13_array = preg_split('/\s+/', r('22_13'), -1, PREG_SPLIT_NO_EMPTY);
+$firstLetter_13 = $request_13_array;
+foreach ($firstLetter_13 as $key => $value) {
+    $firstLetter_13[$key] =  mb_substr($value, 0, 1);
+}
+$firstLetter_13 = array_unique($firstLetter_13);
+natcasesort($firstLetter_13);
+
+foreach ($firstLetter_13 as $key => $value) {
+    foreach ($request_13_array as $key2 => $value2) {
+        mb_stripos($value2, $value) === 0 ? $result_13 += ["Words start with $value" => $value2] : '';
+    }
+}
+
+f(13, ['enter your text' => '<form action="#" method="post">
+        <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+        <textarea name="22_13"></textarea><br>
+        <input type="submit" value="send">
+        </form>',
+        'word start on' => $result_13,
+]);
 
 
+$request_14 = r('22_14');
+$translit_14 = [
+      'А' => 'A',   'а' => 'a', 
+      'Б' => 'B',   'б' => 'b', 
+      'В' => 'V',   'в' => 'v', 
+      'Г' => 'G',   'г' => 'g', 
+      'Д' => 'D',   'д' => 'd', 
+      'Е' => 'E',   'е' => 'e', 
+      'Ё' => 'Ë',   'ё' => 'ë', 
+      'Ж' => 'Ž',   'ж' => 'ž', 
+      'З' => 'Z',   'з' => 'z', 
+      'И' => 'I',   'и' => 'i', 
+      'Й' => 'J',   'й' => 'j', 
+      'К' => 'K',   'к' => 'k', 
+      'Л' => 'L',   'л' => 'l', 
+      'М' => 'M',   'м' => 'm', 
+      'Н' => 'N',   'н' => 'n', 
+      'О' => 'O',   'о' => 'o', 
+      'П' => 'P',   'п' => 'p', 
+      'Р' => 'R',   'р' => 'r', 
+      'С' => 'S',   'с' => 's', 
+      'Т' => 'T',   'т' => 't', 
+      'У' => 'U',   'у' => 'u', 
+      'Ф' => 'F',   'ф' => 'f', 
+      'Х' => 'CH',  'х' => 'ch', 
+      'Ц' => 'C',   'ц' => 'c', 
+      'Ч' => 'Č',   'ч' => 'č', 
+      'Ш' => 'Š',   'ш' => 'š', 
+      'Щ' => 'ŠČ',  'щ' => 'šč', 
+      'Ъ' => '″',   'ъ' => '″', 
+      'Ы' => 'Y',   'ы' => 'y', 
+      'Ь' => '′',   'ь' => '′', 
+      'Э' => 'È',   'э' => 'è', 
+      'Ю' => 'JU',  'ю' => 'ju', 
+      'Я' => 'JA',  'я' => 'ja',
+];
+
+$result_14 = strtr($request_14, $translit_14);
+
+f(14, ['enter your text' => '<form action="#" method="post">
+        <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+        <textarea name="22_14"></textarea><br>
+        <input type="submit" value="send">
+        </form>',
+        'translit' => $result_14,
+]);
 
 
+$request_15_text = r('22_15_text');
+$request_15_radio = r('22_15');
+$result_15 = '';
+if ($request_15_radio == 'cirilic') {
+    $translit_14 = array_flip($translit_14);
+    $result_15 = strtr($request_15_text, $translit_14);
+} else {
+    $result_15 = strtr($request_15_text, $translit_14);
+}
 
 
+f(15, ['enter your text' => '<form action="#" method="post">
+        <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+        <input type="text" name="22_15_text"><br>
+        <input type="radio" name="22_15" value="translit" id="22_15_translit">
+            <label for="22_15_translit">To translit</label>
+        <input type="radio" name="22_15" value="cirilic" id="22_15_cirilic">
+            <label for="22_15_cirilic">To cirilic</label>
+        <input type="submit" value="send">
+        </form>',
+        'translit' => $result_15,
+]);
 
 
+$questions_16 = [
+    '2+5' => '7',
+    'Лучший размер груди?' => '5',
+    'Работа делает из человека -' => 'обезьяну'
+];
+$result_16 = '';
+$string_16 = '';
+$i = 1;
+$request_16_1 = r('22_16_1');
+$request_16_2 = r('22_16_2');
+$request_16_3 = r('22_16_3');
+foreach ($questions_16 as $key => $value) {
+    $result = ${'request_16_' .$i} == $value ? "<br>your answer " . ${'request_16_' . $i} ." correct <br>" : '<br><input type="text" name="22_16_' . $i . '"><br>';
+    $string_16 .= $key . $result;
+    $i++;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+f(16, ['questions' => '<form action="#" method="post">
+        <input type="hidden" name="' . Yii::$app->request->csrfParam . '" value="' . Yii::$app->request->getCsrfToken() . '">
+        ' . $string_16 . '
+        <input type="submit" value="send">
+        </form>',
+]);
 
 
 
