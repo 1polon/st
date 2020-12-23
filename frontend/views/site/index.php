@@ -15,3 +15,4 @@ $this->title = 'My Yii Application';
  <?= Html::a('lelsson 26', Url::to(['/lesson', 'id' => '26'])) ?> 
  <?= Html::a('lelsson 27', Url::to(['/lesson', 'id' => '27'])) ?>
  <?= Html::a('lelsson 28', Url::to(['/lesson', 'id' => '28'])) ?>
+ <?= Html::a('lelsson 29', Url::to(['/lesson', 'id' => '29'])) ?>
