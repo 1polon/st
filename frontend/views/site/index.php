@@ -12,5 +12,6 @@ $this->title = 'My Yii Application';
 <h1>PHP practice</h1>
 <?= Html::a('lelsson 22', Url::to(['/lesson', 'id' => 22])) ?>
 <h2>Regex</h2>
-<?= Html::a('lelsson 26', Url::to(['/lesson', 'id' => '26'])) ?> 
-<?= Html::a('lelsson 27', Url::to(['/lesson', 'id' => '27'])) ?>
+ <?= Html::a('lelsson 26', Url::to(['/lesson', 'id' => '26'])) ?> 
+ <?= Html::a('lelsson 27', Url::to(['/lesson', 'id' => '27'])) ?>
+ <?= Html::a('lelsson 28', Url::to(['/lesson', 'id' => '28'])) ?>
