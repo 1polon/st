@@ -127,11 +127,10 @@ f(17, [
 
 $st_18 = 'http://site.ru';
 
-$r_18 = preg_replace('#^(http://)([a-z.]+)$#', '<a href="$1$2">$2</a>', $st_18);
+$r_18 = preg_replace('@^(http://)([a-z.]+)$@x', '<a href="$1$2">$2</a>', $st_18);
 f(18, [
     htmlspecialchars('<a href="http://site.ru">site.ru</a>') => htmlspecialchars($r_18)
 ]);
-
 
 
 
