@@ -24,3 +24,8 @@ function r($request)
 {
     return empty($_REQUEST[$request]) ? false : $_REQUEST[$request];
 }
+
+function i($array)
+{
+    return implode(', ', $array[0]);
+}

@@ -1,6 +1,6 @@
 <?php
 
-echo '<h2>PHP,SQL</h2><div class="d-flex-row">';
+echo '<h2>PHP practice</h2><div class="d-flex-row">';
 
 
 
