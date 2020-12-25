@@ -2,34 +2,11 @@
 
 echo '<h2>PHP practice</h2><div class="d-flex-row">';
 
-
-
-// print task number
-// print values
-
-function f($task, $values)
-{
-    if (empty($task)) {
-        throw new Exception('Task is tmpty', 1);
-    }
-    echo"<div class=\"flex-item\"><h3 class=\"flex-item__h3\">Task $task</h3>";
-    foreach ($values as $key => $value) {
-        echo "<p class=\"flex-item__p\">$key</p><div class=\"flex-item__block\">";
-        print_r($value);
-        echo "</div>";
-    }
-    echo'</div>';
-};
-function d($value)
-{
-    echo '<pre>';
-    var_dump($value);
-    echo '</pre>';
-}
-
-function r($request)
-{
-    return empty($_REQUEST[$request]) ? false : $_REQUEST[$request];
+session_start();
+if (!empty($_SESSION['test'])) {
+    f('session from 32 lesson', [
+        '2' => $_SESSION['test']
+    ]);
 }
 
 date_default_timezone_set('Europe/Kiev');

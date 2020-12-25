@@ -1,6 +1,9 @@
 <?php
 
 namespace frontend\controllers;
+use Yii;
+
+require_once(Yii::getAlias('@app') . '/functions/forLessons.php');
 
 class LessonController extends \yii\web\Controller
 {

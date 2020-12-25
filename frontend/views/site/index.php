@@ -16,3 +16,10 @@ $this->title = 'My Yii Application';
  <?= Html::a('lelsson 27', Url::to(['/lesson', 'id' => '27'])) ?>
  <?= Html::a('lelsson 28', Url::to(['/lesson', 'id' => '28'])) ?>
  <?= Html::a('lelsson 29', Url::to(['/lesson', 'id' => '29'])) ?>
+ <h2>Sessions</h2>
+ <?= Html::a('lelsson 32', Url::to(['/lesson', 'id' => '32'])) ?>
+ <h2>Cookie</h2>
+ <?= Html::a('lelsson 33', Url::to(['/lesson', 'id' => '33'])) ?>
+ <h2>DB</h2>
+ <?= Html::a('lelsson 34', Url::to(['/lesson', 'id' => '34'])) ?>
+
