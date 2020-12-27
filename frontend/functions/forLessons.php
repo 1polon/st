@@ -19,7 +19,13 @@ function d($value)
     var_dump($value);
     echo '</pre>';
 }
-
+function dd($value)
+{
+    echo '<pre>';
+    var_dump($value);
+    echo '</pre>';
+    die();
+}
 function r($request)
 {
     return empty($_REQUEST[$request]) ? false : $_REQUEST[$request];
