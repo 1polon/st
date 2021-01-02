@@ -25,4 +25,6 @@ $this->title = 'My Yii Application';
  <?= Html::a('lelsson 35', Url::to(['/lesson', 'id' => '35'])) ?>
  <h2>DB practice</h2>
  <?= Html::a('lelsson 43', Url::to(['/lesson', 'id' => '43'])) ?>
+ <h1>Vue practice</h1>
+ <?= Html::a('1 entery', Url::to(['/vue-lessons', 'id' => '1'])) ?>
 
