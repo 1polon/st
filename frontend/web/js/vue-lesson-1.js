@@ -376,4 +376,96 @@ let a32 = new Vue({
         picked: ''
     }
 })
-// основы компонентов
+
+
+Vue.component('button-counter', {
+    props: ['text'],
+    template: '<p>{{ text }}</p>'
+})
+
+let a33 = new Vue({
+    el: '#a33',
+    data: {
+        posts: [
+            {id:0, title:'hello'},
+            {id:1, title:'gelios'},
+            {id:2, title:'predator'},
+        ]
+    }
+})
+
+Vue.component('my-text-component', {
+    props: ['text'],
+    template: `
+    <div>
+    <p>{{ text }}</p>
+    <button v-on:click="$emit('do-text-large')">text large</button>
+    </div>
+    `
+})
+
+let a34 = new Vue({
+    el: '#a34',
+    data: {
+        text: 'this is text',
+        textSize: 1,
+    }
+})
+
+Vue.component('blog-post', {
+    template:`<button v-on:click="$emit('enlarge', 22, 11)">text up</button>`
+})
+
+let a35 = new Vue({
+    el: '#a35',
+    data: {
+        textValue: 1
+    },
+    methods: {
+        enlarge2: function (textPlus, textMinus) {
+            this.textValue = textPlus - textMinus
+        }
+    }
+
+})
+
+Vue.component('test-v-model', {
+    props: ['searchT'],
+    template: `
+    <input 
+        v-bind:value="searchT"
+        v-on:input="$emit('input', $event.target.value)"
+    >    
+    `
+})
+
+let a36 = new Vue({
+    el: '#a36',
+    data: {
+        searchT: ''
+    }
+})
+Vue.component('tab-home', {
+    template: `<p>home tab</p>`
+})
+Vue.component('tab-stuff', {
+    template: `<p>stuff tab</p>`
+})
+Vue.component('tab-deploy', {
+    template: `<p>deploys tab</p>`
+})
+
+let a37 = new Vue({
+    el: '#a37',
+    data: {
+        currentTab: 'home',
+        buttons: ['home', 'stuff', 'deploy']
+    },
+    computed: {
+        currentTabComponent: function () {
+            return "tab-" + this.currentTab.toLowerCase()
+        }
+    }
+})
+
+// продвинутые компоненты 

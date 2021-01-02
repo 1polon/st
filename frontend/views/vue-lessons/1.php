@@ -201,9 +201,35 @@ v-on:remove="todos.splice(index, 1)"     -->
     <p>{{ picked }}</p>
 </div>
 
+<div id="a33" >
+    <button-counter v-for="el in posts" v-bind:text="el.title" v-bind:key="el.id"></button-counter>
+</div>
+
+<div id="a34" :style="{fontSize: textSize + 'em' }">
+<div >
+    <my-text-component v-bind:text="text" v-on:do-text-large="textSize += 0.1"></my-text-component>
+</div>
+</div>
+
+<div id="a35" v-bind:style="{fontSize: textValue + 'em'}">
+    <blog-post v-on:enlarge="enlarge2"></blog-post>
+</div>
+
+<div id="a36">
+    <test-v-model v-model="searchT"></test-v-model>
+</div>
 
 
-
+<div id="a37">
+    <button 
+        v-for="button in buttons"
+        v-bind:key="button"
+        v-on:click="currentTab = button"
+    >
+    {{ button }}
+    </button>
+    <componen v-bind:is="currentTabComponent"></componen>
+</div>
 
 
 
