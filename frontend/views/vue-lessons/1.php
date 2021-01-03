@@ -232,8 +232,28 @@ v-on:remove="todos.splice(index, 1)"     -->
 </div>
 
 
+<div id="a38">
+    <componenta-38>
+    </componenta-38>
+</div>
 
 
+<div id="a39">
+    <asdf post-title="data1"></asdf>
+</div>
+
+<div id="a40">
+    <a40component title="it's title" v-bind:likes='likes'></a40component>
+</div>
+
+<div id="a41">
+    <a41c v-bind:bb="bb"></a41c>
+</div>
+
+
+<div id="a42">
+    <validation-in-component :id="form.id"></validation-in-component>
+</div>
 
 
 

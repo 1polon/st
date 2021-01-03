@@ -467,5 +467,121 @@ let a37 = new Vue({
         }
     }
 })
+let componenta38inside = {
+    template: `
+    <span> a'm inside </span>
+    `
+}
 
-// продвинутые компоненты 
+let componenta38 = {
+    components: {
+        'componenta38inside': componenta38inside
+    },
+    template: `
+    
+    <p> component a38  <componenta38inside></componenta38inside></p>
+    `,
+}
+
+let a38 = new Vue({
+    el: '#a38',
+    components: {
+        'componenta-38': componenta38
+    }
+})
+
+let asdf = {
+    props: ['postTitle'],
+    template: `
+    <p> {{ postTitle }} </p>
+    `
+}
+
+let a39 = new Vue({
+    el: '#a39',
+    components: {
+        'asdf': asdf
+    },
+    data: {
+        data1: 'data ass'
+    }
+    
+})
+
+let a40component = {
+    props: {
+        title: String,
+        likes: Number
+    },
+    template: `
+    <div>
+    <h2>{{ title }}</h2>
+    <span>{{ likes }}</span>
+    </div>
+    `
+}
+
+let a40 = new Vue({
+    el: '#a40',
+    components: {
+        'a40component': a40component
+    },
+    data: {
+        likes: 255
+    }
+})
+
+let a41c = {
+    props: ['bb'],
+    template:`
+    <div>
+    <h2 v-bind:id="bb.id">{{ bb.title }}</h2>
+    <p>{{ bb.description }}</p>
+    </div>
+    `
+}
+
+let a41 = new Vue({
+    el: '#a41',
+    components: {
+        'a41c': a41c
+    },
+    data: {
+        bb: {
+            id: 1,
+            title: "It's title",
+            description: 'Description       r'
+        }
+    }
+})
+
+let a42c = {
+    props: {
+            id: {
+                type: Number,
+                required: true, //обязательный
+                validator: function (value) { // больше нуля
+                    return value >= 0;
+                },
+                default: 100
+            },
+    },
+
+    template: `
+    <div :id="id">
+    {{ id }}
+    </div>
+    `
+}
+
+let a42 = new Vue({
+    el: '#a42',
+    components: {
+        'validation-in-component': a42c
+    },
+    data: {
+        form:{
+            id: 12
+        }
+    }
+})
