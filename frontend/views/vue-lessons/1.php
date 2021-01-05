@@ -255,7 +255,12 @@ v-on:remove="todos.splice(index, 1)"     -->
     <validation-in-component :id="form.id"></validation-in-component>
 </div>
 
-
+<div id="a43">
+    <base-checkbox v-model="loginVue"></base-checkbox>
+    <input type="text" v-model="message">
+    <h2>{{ message }}</h2>
+    <h2>{{ loginVue }}</h2>
+</div>
 
 
 

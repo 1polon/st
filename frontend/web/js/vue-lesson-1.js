@@ -561,6 +561,7 @@ let a42c = {
                 type: Number,
                 required: true, //обязательный
                 validator: function (value) { // больше нуля
+                    // alert('AHTUNG!')
                     return value >= 0;
                 },
                 default: 100
@@ -585,3 +586,33 @@ let a42 = new Vue({
         }
     }
 })
+
+let a43c = {
+    model: {
+        prop: 'checked',
+        event: 'change'
+    },
+    props: {
+        checked: Boolean
+    },
+    template: `
+    <div>
+    <input
+    type="checkbox"
+    v-bind:checked="checked"
+    v-on:change="$emit('change', $event.target.checked)"
+    >
+    </div>
+    `
+}
+let a43 = new Vue({
+    el: '#a43',
+    components: {
+        'base-checkbox': a43c
+    },
+    data: {
+        loginVue: true,
+        message: ''
+    }
+})
+asdf
