@@ -10,6 +10,7 @@ class VueLessonsController extends \yii\web\Controller
 {
     public function actionIndex($id)
     {
+        $this->getView()->registerJsFile('@web/js/helpers.js');
         return $this->render($id);
     }
 }

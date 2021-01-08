@@ -615,4 +615,36 @@ let a43 = new Vue({
         message: ''
     }
 })
-asdf
+
+
+//слоты
+let a44c = {
+    template: `
+    <div>
+        <h2>hello</h2>
+        // <slot name="slot_1"><br>1<br></slot>
+        // <slot>2</slot>
+        // <slot></slot>
+        // <slot>4</slot>
+        </div>
+    `
+}
+let a44 = new Vue({
+    el: '#a44',
+    data: {
+        asdf: 'sdfwe3r23'
+    },
+    components: {
+        'navigation-link': a44c
+    }
+})
+
+
+
+
+
+
+
+
+
+

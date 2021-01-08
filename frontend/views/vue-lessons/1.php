@@ -262,7 +262,12 @@ v-on:remove="todos.splice(index, 1)"     -->
     <h2>{{ loginVue }}</h2>
 </div>
 
-
+<div id="a44">
+    <navigation-link url="/profile" >
+    <template v-slot="slot_1">2f2ef</template>
+        
+    </vavigation-link>
+</div>
 
 
 
