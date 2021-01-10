@@ -640,6 +640,122 @@ let a44 = new Vue({
 })
 
 
+let a45c = {
+    template: 
+        `
+        <div>
+
+        <h2>a45</h2>
+        <slot>default</slot>
+        <slot>default</slot>
+        <slot>default</slot>
+        <slot>default</slot>
+        <slot>default</slot>
+        </div>
+        `
+}
+
+let a45 = new Vue({
+    el: '#a45',
+    data: {
+        a1: 'a11',
+    },
+    components: {
+        'test-component': a45c,
+    }
+})
+
+
+let a46c = {
+    template: 
+    `
+        <div>
+            <header>
+                <slot name="header"> header slot </slot>
+            </header>
+            <slot>default slot</slot>
+        </div>
+    `
+}
+
+let a46 = new Vue({
+    el: '#a46',
+    components: {
+        'test': a46c
+    }
+})
+
+
+let a47c = {
+    data: function () {
+        return {
+            a47data: 'am data'
+        } 
+    },
+    template: 
+    `
+    <div>
+        <slot v-bind:data1="a47data"></slot>
+        <h2><slot name="ser"></slot></h2>
+    </div>
+    
+    `
+}
+
+let a47 = new Vue({
+    el: '#a47',
+    components: {
+        'test': a47c
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

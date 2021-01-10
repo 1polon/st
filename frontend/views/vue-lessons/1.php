@@ -269,8 +269,30 @@ v-on:remove="todos.splice(index, 1)"     -->
     </vavigation-link>
 </div>
 
+<div id="a45">
+    <test-component>123</test-component>
+    
+</div>
 
+<div id="a46">
+    <test>
+    <template v-slot:header>123</template>
+    <template>default template slot</template>
+    </test>
+    asdf==========
 
+</div>
+
+<div id="a47">
+    <test>
+    
+    <template v-slot="{ data1 }">
+    {{ data1 }}
+    </template>
+    <template #ser>23e2</template>
+    
+    </test>
+</div>
 
 
 
