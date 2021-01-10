@@ -323,15 +323,34 @@ v-on:remove="todos.splice(index, 1)"     -->
 </div>
 
 
+<div id="a50">
+<button v-on:click="focus"> фокус на инпуте елемента </button>
+<async ref="my50ref"></async> <br>
+</div>
+
+
+<div id="a51">
+    <inside-component>
+    </inside-component>
+</div>
 
 
 
 
+<div id="a52"><button>one console</button></div>
+
+<script type="text/x-template" id="a53xt">
+    <h2> {{ data }} </h2>
+</script>
+
+<div id="a53">
+<a53xt></a53xt>
+</div>
 
 
-
-
-
+<div id="a54">
+    <once v-bind:attribute="attribute"></once>
+</div>
 
 
 

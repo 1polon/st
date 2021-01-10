@@ -809,55 +809,104 @@ let a49 = new Vue({
 })
 
 
+let a50c = {
+    template: `
+    <h2>
+    
+<input type="text" ref="input">
+
+    </h2>
+    `
+}
+
+let a50 = new Vue({
+    el: '#a50',
+    components: {
+        'async': a50c
+    },
+    methods: {
+        focus: function () {
+            a50.$refs.my50ref.$refs.input.focus()
+        }
+    }
+})
+
+let a51c2 = {
+    inject: ['console_1'],
+    template: `<button v-on:click="console_1">console inside</button>`
+}
+
+let a51c1 = {
+    inject: ['console_1'],
+    components: {
+        'after-inside-component': a51c2,
+    },
+    template: `
+    <div><button v-on:click="console_1">console</button> 
+    <after-inside-component></after-inside-component>
+    </div>
+    `
+}
 
 
+let a51 = new Vue({
+    el: '#a51',
+    components: {
+        'after-inside-component': a51c2,
+        'inside-component': a51c1
+    },
+    methods: {
+        console_1: function () {
+            console.log(this);
+        }
+    },
+    provide: function () {
+        return {
+            console_1: this.console_1
+        }
+    }
+})
 
+let a52 = new Vue({
+    el: '#a52',
+    mounted: function () {
+        this.$on('click', function () {
+            console.log('asdf');
+        })
+    }
+})
 
+let a53xt = {
+    data: function () {
+        return {
+            data: 'hello'
+        }
+    },
+    template: "#a53xt",
+}
 
+let a53 = new Vue({
+    el: '#a53',
+    components: {
+        a53xt
+    }
+})
 
+let a54c = {
+    props: ['attribute'],
+    template: `<div v-once>
+    много много статичного кода который будет закеширован и не реактивный используеться только когда есть
+    замедление на страницах {{ attribute }}
+    </div>
+    `
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let a54 = new Vue({
+    el: '#a54',
+    data: {
+        attribute: 'asdfasdf',
+    },
+    components: {
+        'once':a54c
+    }
+})
