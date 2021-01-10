@@ -709,7 +709,104 @@ let a47 = new Vue({
     }
 })
 
+let a48c1 = {
+    template: `
+        <h2> a48c1 </h2>
+    `
+}
+let a48c2 = {
+    template: `
+        <h2> a48c2 </h2>
+    `
+}
+let a48c3 = {
+    template: `
+        <h2> a48c3 </h2>
+    `
+}
 
+
+let a48 = new Vue({
+    el: '#a48',
+    data: {
+        buttons: [
+            'a48c1',
+            'a48c2',
+            'a48c3'
+        ],
+        currentTab: 'a48c1'
+    },
+    components: {
+        a48c1,
+        a48c2,
+        a48c3
+    },
+    computed: {
+        currentComponent: function () {
+            return this.currentTab.toLowerCase();
+        }
+    }
+})
+
+
+let a49_archive = {
+    template: `
+    <div> this is archive </div>
+    `
+}
+let a49_posts = {
+    data: function () {
+        return {
+            posts: [
+                {id: 1,title: 'Title_1',description: 'description 1'},
+                {id: 2,title: 'Title_2',description: 'description 2'},
+                {id: 3,title: 'Title_3',description: 'description 3'}
+            ],
+            currentPost: null,
+        }
+    },
+    template: `
+    <div>
+        <section>
+            <button         
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-on:click="currentPost = post"
+                v-bind:class="['btn', {'btn-primary': post === currentPost}]">
+            {{ post.title }}
+            </button>
+            <p v-if="currentPost">
+                {{currentPost}} 
+            </p>
+        </section>
+    </div>
+    `
+}
+
+{/* <p 
+v-for="post in posts"
+v-bind:key="post.id"
+v-bind:is="currentPost">
+    <h1> {{ post.title }} </h1>
+    <span v-html="post.description"></span>
+</p> */}
+
+let a49 = new Vue({
+    el: '#a49',
+    components: {
+        'archive': a49_archive,
+        'posts': a49_posts
+    },
+    data: {
+        buttons: ['archive', 'posts'],
+        currentTab: 'posts'
+    },
+    computed: {
+        currentTabComponent: function () {
+            return this.currentTab.toLowerCase();
+        }
+    }
+})
 
 
 

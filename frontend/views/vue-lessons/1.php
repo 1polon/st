@@ -295,9 +295,32 @@ v-on:remove="todos.splice(index, 1)"     -->
 </div>
 
 
+<div id="a48">
+    <button 
+        v-for="button in buttons" 
+        v-on:click="currentTab = button" 
+        v-bind:key="button">
+    {{ button }}
+    </button>
+    <keep-alive>
+    <component v-bind:is="currentComponent">
+    </component>
+    </keep-alive>
+</div>
 
 
-
+<div id="a49">
+    <button
+        v-for="button in buttons"
+        v-on:click="currentTab = button"
+        v-bind:class="['btn', {'btn-success': currentTab === button}]"
+        v-bind:key="button">
+        {{ button }}
+        </button>
+    <keep-alive>
+        <component v-bind:is="currentTabComponent"></component>
+    </keep-alive>
+</div>
 
 
 
